@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en" ng-app="ladderApp">
+<head>
+  <meta charset="utf-8">
+  <title>Simple Ladder App</title>
+  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+
+  <script src="bower_components/jquery/dist/jquery.js"></script>
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/angular-animate/angular-animate.js"></script>
+  <script src="bower_components/angular-route/angular-route.js"></script>
+  <script src="bower_components/angular-resource/angular-resource.js"></script>
+  <script src="js/controllers.js"></script>
+</head>
+<body ng-controller="LadderAppCtrl">
+  <div class="container-fluid">
+  <div class="row">
+    <div class="col-md-2">
+      <!--Sidebar content-->
+
+      Search: <input ng-model="query">
+      Sort by:
+      <select ng-model="orderProp">
+        <option value="rank">Ranking</option>
+        <option value="name">Alphabetical</option>
+      </select>
+
+
+    </div>
+    <div class="col-md-10">
+      <!--Body content-->
+
+      <ul class="players">
+        <li ng-repeat="player in players | filter:query | orderBy:orderProp">
+          <span>{{player.name}}</span>
+          <p>{{player.rank}}</p>
+        </li>
+      </ul>
+
+    </div>
+  </div>
+</div>
+</body>
+</html>
