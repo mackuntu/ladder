@@ -1,0 +1,37 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'node', '/usr/local/bin/npm', 'start' ]
+2 info using npm@2.1.14
+3 info using node@v0.10.34
+4 verbose node symlink /usr/local/bin/node
+5 verbose run-script [ 'prestart', 'start', 'poststart' ]
+6 info prestart ladder@0.0.0
+7 verbose unsafe-perm in lifecycle true
+8 info start ladder@0.0.0
+9 verbose unsafe-perm in lifecycle true
+10 info ladder@0.0.0 Failed to exec start script
+11 verbose stack Error: ladder@0.0.0 start: `node app.js`
+11 verbose stack Exit status 8
+11 verbose stack     at EventEmitter.<anonymous> (/usr/local/lib/node_modules/npm/lib/utils/lifecycle.js:212:16)
+11 verbose stack     at EventEmitter.emit (events.js:98:17)
+11 verbose stack     at ChildProcess.<anonymous> (/usr/local/lib/node_modules/npm/lib/utils/spawn.js:14:12)
+11 verbose stack     at ChildProcess.emit (events.js:98:17)
+11 verbose stack     at maybeClose (child_process.js:766:16)
+11 verbose stack     at Process.ChildProcess._handle.onexit (child_process.js:833:5)
+12 verbose pkgid ladder@0.0.0
+13 verbose cwd /Users/kqian/workspace/ladder/test
+14 error Darwin 14.1.0
+15 error argv "node" "/usr/local/bin/npm" "start"
+16 error node v0.10.34
+17 error npm  v2.1.14
+18 error code ELIFECYCLE
+19 error ladder@0.0.0 start: `node app.js`
+19 error Exit status 8
+20 error Failed at the ladder@0.0.0 start script 'node app.js'.
+20 error This is most likely a problem with the ladder package,
+20 error not with npm itself.
+20 error Tell the author that this fails on your system:
+20 error     node app.js
+20 error You can get their info via:
+20 error     npm owner ls ladder
+20 error There is likely additional logging output above.
+21 verbose exit [ 1, true ]
