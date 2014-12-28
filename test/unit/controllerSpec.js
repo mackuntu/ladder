@@ -1,13 +1,15 @@
 'use strict';
 
+var utils = require('../utils');
+
 describe('LadderApp Controller', function(){
 
-    describe('LadderAppCtrl', function() {
+    describe('PlayerListCtrl', function() {
         var scope, ctrl, $httpBackend;
 
         beforeEach(module('ladderApp'));
 
-        beforeEach(inject(function(_$httpBackend_, $rootScope, $controller) {
+        beforeEach(inject(function( $rootScope, _$httpBackend_, $controller) {
             $httpBackend = _$httpBackend_;
             $httpBackend.expectGET('players/players.json').
                 respond([
@@ -27,7 +29,7 @@ describe('LadderApp Controller', function(){
                     }
                 ]);
             scope = $rootScope.$new();
-            ctrl = $controller('LadderAppCtrl', {$scope:scope})
+            ctrl = $controller('PlayerListCtrl', {$scope:scope})
         }));
 
         it('should create 3 "players" model with 3 players fetched from xhr', function() {

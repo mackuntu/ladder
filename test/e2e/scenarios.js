@@ -1,7 +1,14 @@
 describe('Simple Ladder Tournament App', function() {
     describe('Player list view', function() {
         beforeEach(function() {
-            browser.get('app/index.html');
+            browser.get('index.html');
+        });
+
+        it('should redirect index.html to index.html#/players', function () {
+            browser.get('index.html');
+            browser.getLocationAbsUrl().then(function(url) {
+                expect(url.split('#')[1]).toBe('/players');
+            });
         });
 
         it('should filter the players by name as a user types into the search box', function() {
