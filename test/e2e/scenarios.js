@@ -1,11 +1,11 @@
 describe('Simple Ladder Tournament App', function() {
     describe('Player list view', function() {
         beforeEach(function() {
-            browser.get('index.html');
+            browser.get('/');
         });
 
         it('should redirect index.html to index.html#/players', function () {
-            browser.get('index.html');
+            browser.get('/');
             browser.getLocationAbsUrl().then(function(url) {
                 expect(url.split('#')[1]).toBe('/players');
             });

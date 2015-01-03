@@ -1,0 +1,12 @@
+.container
+    .row
+        .col-md-offset-3.col-md-5
+            .panel.panel-info
+                .panel-heading
+                    h4 Add your login to the bracket
+                .panel-body
+                    form.form(ng-submit='addPlayer()', role='form')
+                        .input-group.input-group-lg
+                            input.form-control(type='text', ng-model='newPlayer', name='newPlayer', aria-describedby='amazon-addon')
+                            span#amazon-addon.input-group-addon @amazon.com
+                        input#submit.btn.btn-lg.btn-primary(type='submit', value="I'll Play!")

@@ -1,0 +1,18 @@
+.container-fluid
+      .row
+        .col-md-2
+          // Sidebar content
+          p {{user}}
+          |       Search: 
+          input(ng-model='query')
+          br
+          |       Sort by:
+          select(ng-model='orderProp')
+            option(value='rank') Ranking
+            option(value='name') Alphabetical
+        .col-md-10
+          // Body content
+          ul.players
+            li.player-listinga(ng-repeat='player in players | filter:query | orderBy:orderProp')
+              span {{player.name}}
+              p {{player.rank}}

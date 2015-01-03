@@ -2,7 +2,8 @@
 var ladderApp = angular.module('ladderApp', [
     'ngRoute', 
     'ngResource', 
-    'ladderControllers'
+    'ladderControllers',
+    'ngAnimate'
     ]);
 
 ladderApp.config(['$routeProvider', '$locationProvider', '$httpProvider', 
@@ -52,23 +53,27 @@ ladderApp.config(['$routeProvider', '$locationProvider', '$httpProvider',
 
         $routeProvider.
             when('/standings', {
-                templateUrl: 'partials/standing-list.html',
+                templateUrl: 'partials/standing-list',
                 controller: 'PlayerListCtrl',
             })
             .when('/players', {
-                templateUrl: 'partials/player-list.html',
+                templateUrl: 'partials/player-list',
                 controller: 'PlayerListCtrl',
                 resolve: {
                   loggedin: checkLoggedin
                 }
             })
             .when('/players/:playerId', {
-                templateUrl: 'partials/player-detail.html',
+                templateUrl: 'partials/player-detail',
                 controller: 'PlayerDetailCtrl'
             })
             .when('/login', {
-                templateUrl: 'views/login.html',
+                templateUrl: './login',
                 controller: 'LoginCtrl'
+            })
+            .when('/register', {
+                templateUrl: './register',
+                controller: 'RegistrationCtrl'
             })
             .otherwise({
                 redirectTo: '/standings'

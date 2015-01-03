@@ -1,0 +1,27 @@
+.container-fluid
+      .row
+        .col-md-2
+          // Sidebar content
+          p {{user}}
+          |       Search: 
+          input.form-control(ng-model='query')
+          br
+          |       Sort by:
+          select.form-control(ng-model='orderProp')
+            option(value='rank') Ranking
+            option(value='name') Alphabetical
+          form(ng-submit='addPlayer()')
+            | Add your login to the bracket
+            .placeholder(ng-click="showInput=true;turnon('dynamic')", ng-show="!showInput" ng-bind-html="'Click for ' + newPlayer | linky") 
+            input.form-control.dynamic#dynamic(type='text', ng-model='newPlayer', name='newPlayer', ng-show='showInput', ng-blur="showInput=false")
+            input.btn.btn-primary#submit(type='submit', value='Submit')
+        .col-md-10
+          // Body content
+          ul.players.media-list
+            li.media.player-listinga(ng-repeat='player in players | filter:query | orderBy:orderProp')
+                .media-left
+                    h2 {{player.rank}}
+                .media-body
+                    h3.media-heading
+                        {{player.name}}
+                    p weeks at location

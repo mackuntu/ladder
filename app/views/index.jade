@@ -1,0 +1,22 @@
+doctype html
+html(lang='en', ng-app='ladderApp')
+head
+    meta(charset='utf-8')
+    title Simple Ladder App
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css')
+    link(rel='stylesheet', href='css/animations.css')
+    link(rel='stylesheet', href='css/cover.css')
+    script(src='bower_components/jquery/dist/jquery.js')
+    script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js')
+    script(src='bower_components/angular/angular.js')
+    script(src='bower_components/angular-animate/angular-animate.js')
+    script(src='bower_components/angular-route/angular-route.js')
+    script(src='bower_components/angular-resource/angular-resource.js')
+    script(src='bower_components/angular-sanitize/angular-sanitize.js')
+    script(src='js/app.js')
+    script(src='js/controllers.js')
+    script(src='js/factory.js')
+  body
+    .view-container
+      .view-frame(ng-view='')
+

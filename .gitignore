@@ -1,2 +1,4 @@
 angoose-client-generated.js
 node_modules
+coverage
+app/bower_components
