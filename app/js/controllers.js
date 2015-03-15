@@ -87,6 +87,7 @@ ladderControllers.controller('RegistrationCtrl', function($scope, $rootScope, $h
 ladderControllers.controller('LoginCtrl', function($scope, $rootScope, $http, $location) {
     $scope.user = {};
     $scope.login = function() {
+        console.log('Called login');
         $http.post('/login', {
             username: $scope.user.username,
             password: $scope.user.password,
@@ -96,7 +97,8 @@ ladderControllers.controller('LoginCtrl', function($scope, $rootScope, $http, $l
             $location.url('/admin');
         })
         .error(function() {
-            $rootScope.messaage = 'Authentication failed';
+            console.log('We had an error');
+            $rootScope.message = 'Authentication failed';
             $location.url('/login');
         });
     };

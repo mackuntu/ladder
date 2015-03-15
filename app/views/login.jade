@@ -1,11 +1,13 @@
-h1 Login
-  form(ng-submit='login()', id='login-form')
-      p
-        label.control-label Username
-        input(type='text', placeholder='Username', ng-model='user.username')
-      p
-        label.control-label Password
-        input(type='password', placeholder='Password', ng-model='user.password')
-        br
-      p
-        button.btn.btn-primary(type='submit') Login
+.container 
+    h1 Login
+      form(ng-submit='login()', id='login-form')
+          p
+            label.control-label Username
+            input(type='text', placeholder='Username', ng-model='user.username')
+          p
+            label.control-label Password
+            input(type='password', placeholder='Password', ng-model='user.password')
+            br
+          p
+            button.btn.btn-primary(type='submit') Login
+    | {{$root.message}}
