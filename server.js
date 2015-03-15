@@ -8,7 +8,13 @@ var cookieParser = require('cookie-parser');
 var morgan = require('morgan');
 var session = require('express-session');
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/test');
+
+var env = process.env.ENV; 
+if (env) {
+    mongoose.connect(process.env.MONGOHQ_URL);
+} else {
+    mongoose.connect('mongodb://localhost/test');
+}
 var haml = require('hamljs');
 var fs = require('fs');
 var partials = require('express-partial');
