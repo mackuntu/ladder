@@ -40,6 +40,7 @@
   "dependencies": {
     "body-parser": "^1.10.0",
     "bower": "^1.3.12",
+    "cookie-parser": "^1.3.4",
     "express": "^4.10.6",
     "express-partial": "^0.1.0",
     "express-session": "^1.9.3",
