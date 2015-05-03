@@ -4,7 +4,8 @@ module.exports = function(config){
     basePath : '../',
 
     preprocessors : {
-        'app/js/*.js': 'coverage'
+        'app/js/**/*.js.coffee': 'coverage',
+        'test/unit/**/*.js.coffee': 'coffee'
     },
 
     files : [
@@ -14,8 +15,9 @@ module.exports = function(config){
       'app/bower_components/angular-animate/angular-animate.js',
       'app/bower_components/angular-mocks/angular-mocks.js',
       'app/bower_components/angular-sanitize/angular-sanitize.js',
-      'app/js/**/*.js',
-      'test/unit/**/*.js'
+      'app/js/*.js.coffee',
+      'app/js/**/*.js.coffee',
+      'test/unit/**/*.js.coffee'
     ],
 
     autoWatch : true,

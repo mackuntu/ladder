@@ -19,26 +19,10 @@ describe 'LadderApp Controller', ->
       ]
       scope = $rootScope.$new()
       ctrl = $controller('PlayerListCtrl', $scope: scope)
-      return
     )
     it 'should create 2 "players" model with 2 players fetched from xhr', ->
       $httpBackend.flush()
       expect(scope.players.length).to.equal 2
-      return
+
     it 'should set default value of orderProp model', ->
       expect(scope.orderProp).to.equal 'rank'
-      return
-    return
-  describe 'LoginCtrl', ->
-    scope = undefined
-    ctrl = undefined
-    $httpBackend = undefined
-    beforeEach module('ladderApp')
-    beforeEach inject(($rootScope, _$httpBackend_, $controller) ->
-      $httpBackend = _$httpBackend_
-      scope = $rootScope.$new()
-      ctrl = $controller('LoginCtrl', $scope: scope)
-      return
-    )
-    return
-  return
