@@ -46,6 +46,8 @@ describe 'Route tests', ->
 
   it 'should route player list as expected', ->
     $httpBackend.when('GET', 'partials/player-list').respond(200)
+
+    # this route requires authentication
     $httpBackend.when('GET', '/loggedin').respond(200)
     # test routing to default route
     $location.path('/players')

@@ -4,18 +4,15 @@ describe 'LadderApp Controller', ->
     scope = undefined
     ctrl = undefined
     $httpBackend = undefined
-    beforeEach module('ladderApp')
+    beforeEach module('playerListController')
     beforeEach inject(($rootScope, _$httpBackend_, $controller) ->
       $httpBackend = _$httpBackend_
       $httpBackend.expectGET('/players').respond [
-        {
-          'name': 'Martin Qian'
-          'rank': 1
-        }
-        {
-          'name': 'Ben Hamming'
-          'rank': 2
-        }
+        'name': 'Martin Qian'
+        'rank': 1
+      ,
+        'name': 'Ben Hamming'
+        'rank': 2
       ]
       scope = $rootScope.$new()
       ctrl = $controller('PlayerListCtrl', $scope: scope)
