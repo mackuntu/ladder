@@ -17,6 +17,7 @@
     "karma-jasmine": "^0.1.5",
     "karma-mocha": "^0.1.10",
     "karma-mocha-reporter": "^1.0.0",
+    "karma-coffee-preprocessor": "^0.2.1",
     "karma-sinon": "^1.0.4",
     "mocha": "^2.1.0",
     "protractor": "~1.0.0",
@@ -27,7 +28,7 @@
   "scripts": {
     "postinstall": "./node_modules/bower/bin/bower install",
     "prestart": "npm install",
-    "start": "nodemon server.js",
+    "start": "nodemon server.js.coffee",
     "pretest": "npm install",
     "test": "node node_modules/karma/bin/karma start test/karma.conf.js",
     "test-single-run": "node node_modules/karma/bin/karma start test/karma.conf.js  --single-run",
