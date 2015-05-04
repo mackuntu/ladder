@@ -1,5 +1,3 @@
-var angoose = require("angoose");
-
 var mongoose = angoose.getMongoose();
 
 mongoose.set('debug', true);

@@ -4,3 +4,4 @@ coverage
 app/bower_components
 node_modules
 .idea/
+dist/

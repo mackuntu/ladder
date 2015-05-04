@@ -1,5 +1,5 @@
 'use strict'
-m = angular.module 'playerListController', []
+m = angular.module 'playerListController', ['ladderFactories']
 
 m.controller 'PlayerListCtrl', [
   '$scope'

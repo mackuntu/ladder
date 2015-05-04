@@ -58,6 +58,7 @@ app.use passport.session()
 # End setup authentication
 #==================================================================
 app.use express.static(__dirname + '/app')
+app.use express.static(__dirname + '/dist')
 #app.use(express.favicon());
 app.use bodyParser.json()
 # let app use partial
