@@ -13,7 +13,7 @@ gulp.task 'build', ->
   .pipe gulp.dest 'dist'
   .on 'error', gutil.log
 
-gulp.task 'watch', ->
+gulp.task 'default', ->
   gulp.start 'build'
   watch 'app/js/**/*.coffee', batch ->
     gulp.start 'build'
