@@ -36,20 +36,20 @@ m.config [
             $location.url '/login'
           $q.reject response
     $routeProvider.when('/standings',
-      templateUrl: 'partials/standing-list'
+      templateUrl: 'partials/standing-list.html'
       controller: 'PlayerListCtrl')
     .when('/players',
-      templateUrl: 'partials/player-list'
+      templateUrl: 'partials/player-list.html'
       controller: 'PlayerListCtrl'
       resolve: loggedin: checkLoggedin)
     .when('/players/:playerId',
-      templateUrl: 'partials/player-detail'
+      templateUrl: 'partials/player-detail.html'
       controller: 'PlayerDetailCtrl')
     .when('/login',
-      templateUrl: './login'
+      templateUrl: './login.html'
       controller: 'LoginCtrl')
     .when('/register',
-      templateUrl: './register'
+      templateUrl: './register.html'
       controller: 'RegistrationCtrl')
     .otherwise redirectTo: '/standings'
 ]

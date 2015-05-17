@@ -57,25 +57,20 @@ app.use passport.session()
 #==================================================================
 # End setup authentication
 #==================================================================
-app.use express.static(__dirname + '/app')
 app.use express.static(__dirname + '/dist')
+app.use express.static(__dirname + '/dist/views')
 #app.use(express.favicon());
 app.use bodyParser.json()
 # let app use partial
 #app.use(partials());
 # register jade template engine
-app.set 'views', 'app/views'
-app.set 'view engine', 'jade'
 app.set 'dbUrl', config.db[app.settings.env]
 app.get '/', (req, res) ->
   res.render 'index',
     title: 'Index'
     message: 'LadderApp initializing...'
   return
-app.get '/partials/:name', (req, res) ->
-  name = req.params.name
-  res.render 'partials/' + name
-  return
+
 app.get '/login', (req, res) ->
   res.render 'login'
   return

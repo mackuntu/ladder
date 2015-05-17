@@ -6,7 +6,7 @@ m.controller 'PlayerListCtrl', [
   '$http'
   'focus'
   ($scope, $http, focus) ->
-    angular.extend $scope, ->
+    angular.extend $scope,
       players : []
       getPlayers : ->
         $http.get('/players').success((data, status, headers, config) ->
