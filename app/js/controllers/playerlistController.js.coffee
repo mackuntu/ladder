@@ -8,6 +8,14 @@ m.controller 'PlayerListCtrl', [
   ($scope, $http, focus) ->
     angular.extend $scope,
       players : []
+      myRank : 0
+      canChallenge : (rank) ->
+        if $scope.myRank == -1
+          false
+        else if Math.abs(rank - $scope.myRank) <= 2
+          true
+        else
+          false
       getPlayers : ->
         $http.get('/players').success((data, status, headers, config) ->
           console.log data

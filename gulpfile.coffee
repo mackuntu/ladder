@@ -73,14 +73,17 @@ gulp.task 'browsersync', ['nodemon'], ->
     port: 7000
 
 gulp.task 'nodemon', (cb) ->
+  started = false
   nodemon
     script: 'server.js.coffee'
     watch: 'server.js.coffee'
   .on 'restart', ->
     console.log('restarted')
-    cb()
   .on 'start', ->
-    cb()
+    console.log('calling start')
+    if !started
+      started = true
+      cb()
 
 gulp.task 'clean', ->
   gulp.src 'dist/**/*', {read : false}

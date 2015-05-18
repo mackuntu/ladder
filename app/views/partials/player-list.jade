@@ -16,3 +16,6 @@
         li.player-listinga(ng-repeat='player in players | filter:query | orderBy:orderProp')
           span {{player.name}}
           p {{player.rank}}
+          div(ng-if='canChallenge(player.rank)')
+            button.btn.btn-primary()
+              Challenge

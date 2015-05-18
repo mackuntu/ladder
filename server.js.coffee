@@ -8,15 +8,19 @@ cookieParser = require('cookie-parser')
 morgan = require('morgan')
 session = require('express-session')
 mongoose = require('mongoose')
+favicon = require 'serve-favicon'
 env = process.env.ENV
 if env
   mongoose.connect process.env.MONGOHQ_URL
 else
   mongoose.connect 'mongodb://localhost/test'
 fs = require('fs')
-partials = require('express-partial')
+#partials = require('express-partial')
 # Create the express app, set port to 5000
 app = express()
+# get a favicon to serve here
+app.use favicon(__dirname + '/favicon.ico')
+
 app.set 'port', process.env.PORT or 5000
 #==================================================================
 # Begin setup authentication
@@ -59,7 +63,6 @@ app.use passport.session()
 #==================================================================
 app.use express.static(__dirname + '/dist')
 app.use express.static(__dirname + '/dist/views')
-#app.use(express.favicon());
 app.use bodyParser.json()
 # let app use partial
 #app.use(partials());

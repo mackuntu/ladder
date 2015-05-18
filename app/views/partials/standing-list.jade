@@ -20,8 +20,12 @@
           ul.players.media-list
             li.media.player-listinga(ng-repeat='player in players | filter:query | orderBy:orderProp')
                 .media-left
-                    h2 {{player.rank}}
+                  h2 {{player.rank}}
                 .media-body
-                    h3.media-heading
-                        {{player.name}}
-                    p weeks at location
+                  h3.media-heading
+                    {{player.name}}
+                  p weeks at location
+                  div(ng-if='canChallenge(player.rank)')
+                    button.btn.btn-primary()
+                      | Challenge
+
