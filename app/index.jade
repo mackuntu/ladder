@@ -4,9 +4,189 @@ head
   meta(charset='utf-8')
   title Simple Ladder App
   link(rel='icon', href='favicon.ico')
-  link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css')
-  link(rel='stylesheet', href='css/animations.css')
-  link(rel='stylesheet', href='css/cover.css')
+  link(href='assets/css/bootstrap.min.css', rel='stylesheet', type='text/css')
+  link(href='assets/css/font-awesome.min.css', rel='stylesheet', type='text/css')
+  link(href='assets/css/main.css', rel='stylesheet', type='text/css')
+  link(href='assets/css/my-custom-styles.css', rel='stylesheet', type='text/css')
+body.dashboard
+  .wrapper
+    // TOP BAR
+    .top-bar
+      .container
+        .row
+          // logo
+          .col-md-2.logo
+            a(href='index.html')
+              img(src='assets/img/kingadmin-logo-white.png', alt='KingAdmin - Admin Dashboard')
+            h1.sr-only KingAdmin Admin Dashboard
+          // end logo
+          .col-md-10
+            .row
+              .col-md-3
+                // search box
+                #tour-searchbox.input-group.searchbox
+                  input.form-control(type='search', placeholder='enter keyword here...')
+                  span.input-group-btn
+                    button.btn.btn-default(type='button')
+                      i.fa.fa-search
+                // end search box
+              .col-md-9
+                .top-bar-right
+                  // responsive menu bar icon
+                  a.hidden-md.hidden-lg.main-nav-toggle()
+                    i.fa.fa-bars
+                  // end responsive menu bar icon
+                  button#start-tour.btn.btn-link(type='button')
+                    i.fa.fa-refresh
+                    |  Start Tour
+                  button#global-volume.btn.btn-link.btn-global-volume(type='button')
+                    i.fa
+                  .notifications
+                    ul
+                      // notification: inbox
+                      li.notification-item.inbox
+                        .btn-group
+                          a.dropdown-toggle(data-toggle='dropdown')
+                            i.fa.fa-envelope
+                            span.count 2
+                            span.circle
+                          ul.dropdown-menu(role='menu')
+                            li.notification-header
+                              em You have 2 unread messages
+                            li.inbox-item.clearfix
+                              a
+                                .media
+                                  .media-left
+                                    img.media-object(src='assets/img/user1.png', alt='Antonio')
+                                  .media-body
+                                    h5.media-heading.name Antonius
+                                    p.text The problem just happened this morning. I can&apos;t see ...
+                                    span.timestamp 4 minutes ago
+                            li.inbox-item.unread.clearfix
+                              a
+                                .media
+                                  .media-left
+                                    img.media-object(src='assets/img/user2.png', alt='Antonio')
+                                  .media-body
+                                    h5.media-heading.name Michael
+                                    p.text Hey dude, cool theme!
+                                    span.timestamp 2 hours ago
+                            li.inbox-item.unread.clearfix
+                              a
+                                .media
+                                  .media-left
+                                    img.media-object(src='assets/img/user3.png', alt='Antonio')
+                                  .media-body
+                                    h5.media-heading.name Stella
+                                    p.text Ok now I can see the status for each item. Thanks! :D
+                                    span.timestamp Oct 6
+                            li.inbox-item.clearfix
+                              a
+                                .media
+                                  .media-left
+                                    img.media-object(src='assets/img/user4.png', alt='Antonio')
+                                  .media-body
+                                    h5.media-heading.name Jane Doe
+                                    p.text
+                                      i.fa.fa-reply
+                                      |  Please check the status of your ...
+                                    span.timestamp Oct 2
+                            li.inbox-item.clearfix
+                              a
+                                .media
+                                  .media-left
+                                    img.media-object(src='assets/img/user5.png', alt='Antonio')
+                                  .media-body
+                                    h5.media-heading.name John Simmons
+                                    p.text
+                                      i.fa.fa-reply
+                                      |  I&apos;ve fixed the problem :)
+                                    span.timestamp Sep 12
+                            li.notification-footer
+                              a View All Messages
+                      // end notification: inbox
+                      // notification: general
+                      li.notification-item.general
+                        .btn-group
+                          a.dropdown-toggle(, data-toggle='dropdown')
+                            i.fa.fa-bell
+                            span.count 8
+                            span.circle
+                          ul.dropdown-menu(role='menu')
+                            li.notification-header
+                              em You have 8 notifications
+                            li
+                              a()
+                                i.fa.fa-comment.green-font
+                                span.text New comment on the blog post
+                                span.timestamp 1 minute ago
+                            li
+                              a()
+                                i.fa.fa-user.green-font
+                                span.text New registered user
+                                span.timestamp 12 minutes ago
+                            li
+                              a()
+                                i.fa.fa-comment.green-font
+                                span.text New comment on the blog post
+                                span.timestamp 18 minutes ago
+                            li
+                              a()
+                                i.fa.fa-shopping-cart.red-font
+                                span.text 4 new sales order
+                                span.timestamp 4 hours ago
+                            li
+                              a()
+                                i.fa.fa-edit.yellow-font
+                                span.text 3 product reviews awaiting moderation
+                                span.timestamp 1 day ago
+                            li
+                              a()
+                                i.fa.fa-comment.green-font
+                                span.text New comment on the blog post
+                                span.timestamp 3 days ago
+                            li
+                              a()
+                                i.fa.fa-comment.green-font
+                                span.text New comment on the blog post
+                                span.timestamp Oct 15
+                            li
+                              a()
+                                i.fa.fa-warning.red-font
+                                span.text.red-font Low disk space!
+                                span.timestamp Oct 11
+                            li.notification-footer
+                              a() View All Notifications
+                      // end notification: general
+                  // logged user and the menu
+                  .logged-user
+                    .btn-group
+                      a.btn.btn-link.dropdown-toggle(, data-toggle='dropdown')
+                        img(src='assets/img/user-avatar.png', alt='User Avatar')
+                        span.name Stacy Rose
+                        span.caret
+                      ul.dropdown-menu(role='menu')
+                        li
+                          a()
+                            i.fa.fa-user
+                            span.text Profile
+                        li
+                          a()
+                            i.fa.fa-cog
+                            span.text Settings
+                        li
+                          a()
+                            i.fa.fa-power-off
+                            span.text Logout
+                  // end logged user and the menu
+                // /top-bar-right
+            // /row
+        // /row
+      // /container
+    // /top
+    // BOTTOM: LEFT NAV AND RIGHT MAIN CONTENT
+    .content-wrapper
+      .content(ng-view='')
   script(src='lib/jquery/dist/jquery.js')
   script(src='lib/bootstrap/dist/js/bootstrap.js')
   script(src='lib/angular/angular.js')
@@ -15,7 +195,4 @@ head
   script(src='lib/angular-resource/angular-resource.js')
   script(src='lib/angular-sanitize/angular-sanitize.js')
   script(src='js/app.js')
-body
-  .view-container
-    .view-frame(ng-view='')
 

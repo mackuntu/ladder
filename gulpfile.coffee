@@ -43,7 +43,12 @@ gulp.task 'build', [
   'build-js'
   'build-jade'
   'build-sass'
+  'copy-assets'
 ]
+
+gulp.task 'copy-assets', ->
+  gulp.src 'app/assets/**/*'
+  .pipe gulp.dest 'dist/assets'
 
 gulp.task 'build-js', ['lint'], ->
   gulp.src 'app/js/**/*.coffee'
@@ -62,6 +67,8 @@ gulp.task 'build-sass', ->
   gulp.src 'app/stylesheet/**/*.sass'
   .pipe sass()
   .pipe gulp.dest 'dist/css'
+  gulp.src 'app/stylesheet/**/*.css'
+  .pipe gulp.dest 'dist/css'
 
 gulp.task 'browsersync', ['nodemon'], ->
   gulp.start 'watch'
@@ -76,9 +83,12 @@ gulp.task 'nodemon', (cb) ->
   started = false
   nodemon
     script: 'server.js.coffee'
-    watch: 'server.js.coffee'
+    watch: ['server.js.coffee', 'models/*']
   .on 'restart', ->
     console.log('restarted')
+    setTimeout ->
+      reload(stream: false)
+    , 1000
   .on 'start', ->
     console.log('calling start')
     if !started
@@ -86,7 +96,7 @@ gulp.task 'nodemon', (cb) ->
       cb()
 
 gulp.task 'clean', ->
-  gulp.src 'dist/**/*', {read : false}
+  gulp.src 'dist/*', {read : false}
   .pipe clean()
 
 gulp.task 'watch', ['build'], ->

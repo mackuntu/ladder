@@ -1,22 +1,30 @@
-.container-fluid
-      .row
-        .col-md-2
-          // Sidebar content
-          p {{user}}
-          |       Search: 
-          input.form-control(ng-model='query')
-          br
-          |       Sort by:
-          select.form-control(ng-model='orderProp')
-            option(value='rank') Ranking
-            option(value='name') Alphabetical
-          form(ng-submit='addPlayer()')
-            | Add your login to the bracket
-            .placeholder(ng-click="showInput=true;turnon('dynamic')", ng-show="!showInput" ng-bind-html="'Click for ' + newPlayer | linky") 
-            input.form-control.dynamic#dynamic(type='text', ng-model='newPlayer', name='newPlayer', ng-show='showInput', ng-blur="showInput=false")
-            input.btn.btn-primary#submit(type='submit', value='Submit')
-        .col-md-10
-          // Body content
+.main-header
+.main-content
+  .row
+    .col-md-2
+      // Sidebar content
+      p {{user}}
+      |       Search:
+      input.form-control(ng-model='query')
+      br
+      |       Sort by:
+      select.form-control(ng-model='orderProp')
+        option(value='rank') Ranking
+        option(value='name') Alphabetical
+      form.form(ng-submit='addPlayer()')
+        | Add your login to the bracket
+        input.form-control.dynamic#dynamic(type='text', ng-model='newPlayer', name='newPlayer')
+        input.btn.btn-primary#submit(type='submit', value='Submit')
+    .col-md-4
+      // List of players
+      .widget
+        .widget-header
+          h3
+            i.fa.fa-list.ol
+            | Rankings
+          em
+            | Current Rankings
+        .widget-content
           ul.players.media-list
             li.media.player-listinga(ng-repeat='player in players | filter:query | orderBy:orderProp')
                 .media-left
@@ -28,4 +36,40 @@
                   div(ng-if='canChallenge(player.rank)')
                     button.btn.btn-primary()
                       | Challenge
-
+    .col-md-4
+      .widget
+        .widget-header
+          h3 Current Challenges
+        .widget-content
+          table.table.table-condensed
+            thead
+              tr
+                th Rank at Stake
+                th Challenger vs Defender
+                th When
+                th Where
+                th Elapsed Time
+            tr
+              td 2
+              td Player1 vs Player2
+              td 5 PM
+              td 2nd floor ping pong room
+              td 1 Day
+      .widget
+        .widget-header
+          h3 Past Challenges
+        .widget-content
+          table.table.table-condensed
+            thead
+              tr
+                th Winner
+                th Challenger vs Defender
+                th When
+                th Where
+                th Elapsed Time
+            tr
+              td Martin Qian
+              td Ben Hamming vs Martin Qian
+              td Tuesday, 1:00 PM
+              td 2nd floor ping pong room
+              td 1 week

@@ -83,26 +83,17 @@ app.get '/register', (req, res) ->
 #==================================================================
 # Begin Setup Mongoose schema and restful api
 #==================================================================
-Player = mongoose.model('Player',
-  name: String
-  alias: String
-  company: String
-  group: String
-  suffix: String
-  email: String
-  updated:
-    type: Date
-    default: Date.now
-  rank: Number)
+models = require('./models/models.js')(mongoose)
+
 app.get '/players/', (req, res) ->
-  Player.find {}, (err, data) ->
+  models.Player.find {}, (err, data) ->
     console.log data
     res.send JSON.stringify(data)
     return
   return
 app.post '/player', (req, res) ->
   console.log req.body
-  Player.find {
+  models.Player.find {
     alias: req.body.alias
     company: req.body.company
   }, (err, data) ->
@@ -110,8 +101,8 @@ app.post '/player', (req, res) ->
     if data.length
       res.sendStatus 400
     else
-      newPlayer = new Player(req.body)
-      Player.count {}, (err, count) ->
+      newPlayer = new models.Player(req.body)
+      models.Player.count {}, (err, count) ->
         newPlayer.rank = count + 1
         newPlayer.save()
         res.sendStatus 200
