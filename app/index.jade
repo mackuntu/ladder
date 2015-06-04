@@ -185,8 +185,23 @@ body.dashboard
       // /container
     // /top
     // BOTTOM: LEFT NAV AND RIGHT MAIN CONTENT
-    .content-wrapper
-      .content(ng-view='')
+    .bottom
+      .container
+        .row
+          .col-md-2.left-sidebar
+            nav.main-nav
+              ul.main-menu
+                li
+                  a.js-sub-menu-toggle
+                    i.fa.fa-dashboard.fa-fw
+                    span.text Dashboard
+                    i.toggle-icon.fa.fa-angle.down
+                  ul.sub-menu.open
+                    li.active
+                      a(href='index.html')
+                        span.text Overview
+          .col-md-10.content-wrapper
+            .content(ng-view='')
   script(src='lib/jquery/dist/jquery.js')
   script(src='lib/bootstrap/dist/js/bootstrap.js')
   script(src='lib/angular/angular.js')
