@@ -1,3 +1,5 @@
-module.exports = ->
-  Player : require './player.js'
-  Game : require './game.js'
+Models = ->
+  Player : require('./player.js').Player
+  Game : require('./game.js').Game
+
+module.exports.Models = new Models()

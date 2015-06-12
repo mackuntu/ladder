@@ -24,4 +24,4 @@ PlayerSchema = new Schema(
   ]
 )
 
-module.exports = mongoose.model('Player', PlayerSchema)
+module.exports.Player = mongoose.model('Player', PlayerSchema)

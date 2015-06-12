@@ -72,27 +72,23 @@ app.get '/', (req, res) ->
   res.render 'index',
     title: 'Index'
     message: 'LadderApp initializing...'
-  return
 
 app.get '/login', (req, res) ->
   res.render 'login'
-  return
+
 app.get '/register', (req, res) ->
   res.render 'register'
-  return
+
 #==================================================================
 # Begin Setup Mongoose schema and restful api
 #==================================================================
-models = require('./models/models.js')(mongoose)
+models = require('./models/models.js').Models
 
 app.get '/players/', (req, res) ->
   models.Player.find {}, (err, data) ->
-    console.log data
     res.send JSON.stringify(data)
-    return
-  return
-app.post '/player', (req, res) ->
-  console.log req.body
+
+app.put '/player', (req, res) ->
   models.Player.find {
     alias: req.body.alias
     company: req.body.company
@@ -106,9 +102,33 @@ app.post '/player', (req, res) ->
         newPlayer.rank = count + 1
         newPlayer.save()
         res.sendStatus 200
-        return
-    return
-  return
+
+app.put '/game', (req, res) ->
+  console.log req.body
+  challenger = models.Player.find {
+    id: req.body.challenger?
+  }
+  defender = models.Player.find {
+    id: req.body.defender?
+  }
+  # Possibly some validation logic here
+  newGame = new models.Game
+      challenger: challenger
+      challengerRank: challenger.rank
+      defender: defender
+      defenderRank: defender.rank
+      completed: false
+
+  newGame.save()
+  res.sendStatus(200)
+
+app.get '/games', (req, res) ->
+  console.log req.body
+  if req.body.group? and req.body.company?
+    models.Game.find
+      group: req.body
+  else
+
 #==================================================================
 # End Setup Mongoose schema and restful api
 #==================================================================
@@ -116,16 +136,15 @@ app.post '/player', (req, res) ->
 # route to test if the user is logged in or not
 app.get '/loggedin', (req, res) ->
   res.send if req.isAuthenticated() then req.user else '0'
-  return
+
 # route to log in
 app.post '/login', passport.authenticate('local'), (req, res) ->
   res.send req.user
-  return
+
 # route to log out
 app.post '/logout', (req, res) ->
   req.logOut()
   res.sendStatus 200
-  return
+
 http.createServer(app).listen app.get('port'), ->
   console.log 'Express server listening on port ' + app.get('port')
-  return

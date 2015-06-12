@@ -23,4 +23,4 @@ GameSchema = new Schema(
   duration: Number
   )
 
-module.exports = mongoose.model('Game', GameSchema)
+module.exports.Game = mongoose.model('Game', GameSchema)
