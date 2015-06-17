@@ -21,6 +21,8 @@ GameSchema = new Schema(
   completed: Boolean
   location: String
   duration: Number
+  group: String
+  company: String
   )
 
 module.exports.Game = mongoose.model('Game', GameSchema)

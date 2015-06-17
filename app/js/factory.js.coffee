@@ -10,5 +10,3 @@ ladderFactories.factory 'focus', ($timeout) ->
       element = document.getElementById(id)
       if element
         element.focus()
-      return
-    return

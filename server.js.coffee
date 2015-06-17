@@ -126,8 +126,17 @@ app.get '/games', (req, res) ->
   console.log req.body
   if req.body.group? and req.body.company?
     models.Game.find
-      group: req.body
+      group: req.body.group
+      company: req.body.company
+    , (err, data) ->
+      if err?
+        console.log('error when trying to get games')
+        res.send JSON.stringify([])
+      else
+        res.send JSON.stringify data
   else
+    res.status(400).send {error: 'invalid request format'}
+
 
 #==================================================================
 # End Setup Mongoose schema and restful api
