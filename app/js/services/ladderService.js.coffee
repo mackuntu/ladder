@@ -1,36 +1,65 @@
 'use strict'
-m = angular.module 'ladderService', []
+m = angular.module 'ladderServices', []
 
-m.factory 'ladderService', [
+m.factory 'playerService', [
   '$http'
-  ($http) ->
+  '$q'
+  ($http, $q) ->
     getPlayers : ->
-      $http.get('/players').success (data, status, headers, config) ->
+      deferred = $q.defer()
+      $http.get '/players'
+      .success (data, status, headers, config) ->
+        deferred.resolve(data)
+      .error (data, status, headers, config) ->
+        deferred.reject(status)
+      deferred.promise
+    createPlayer : (newPlayer) ->
+      $http.put '/player',
+        firstName: newPlayer.firstName
+        lastName: newPlayer.lastName
+        alias: newPlayer.alias
+        company: newPlayer.company
+        group: newPlayer.group
+      .success (data, status, headers, config) ->
         console.log data
-        if data
-          i = 0
-          while i < data.length
-            $scope.players.push data[i]
-            i++
       .error (data, status, headers, config) ->
+        console.log 'post to new player returned error'
         console.log status
-    getGames : ->
-      $http.get('/games').success (data, status, headers, config) ->
-        console.log(data)
-      .error (data, status, headers, config) ->
+]
 
-    addPlayer : (newPlayer)->
-      for attribute in ['name', 'alias', 'company', 'group']
-      if newPlayer
-        maxRank = 0
-        console.log $scope.players
-        $http.post('/player',
-          name: newPlayer
-          alias: newPlayer
-          company: 'amazon'
-          group: 'ihm').success((data, status, headers, config) ->
-          console.log data
-        ).error (data, status, headers, config) ->
-          console.log 'post to new player returned error'
-          console.log status
+m.factory 'tournamentService', [
+  '$http'
+  '$q'
+  ($http, $q) ->
+    createTournament : (newTournament) ->
+      deferred = $q.defer()
+      $http.put '/tournament',
+        company: newTournament.company
+        group: newTournament.group
+        duration: newTournament.duration
+        primaryOwner: newTournament.primaryOwner
+        secondaryOwner: newTournament.secondaryOwner
+        completed: newTournament.completed
+        maxPlayers: newTournament.maxPlayers
+      .success (data, status, headers, config) ->
+        deferred.resolve(data)
+      .error (data, status, headers, config) ->
+        console.log(status)
+        console.log(data)
+        deferred.reject(status)
+      deferred.promise
+]
+
+m.factory 'gameService', [
+  '$http'
+  '$q'
+  ($http, $q) ->
+    getGames : ->
+      deferred = $q.defer()
+      $http.get '/games'
+      .success (data, status, headers, config) ->
+        deferred.resolve(data)
+      .error (data, status, headers, config) ->
+        deferred.reject(status)
+      deferred.promise
 ]

@@ -2,10 +2,11 @@
 ladderFactories = angular.module('ladderFactories', [])
 ladderFactories.factory 'focus', ($timeout) ->
   (id) ->
-    # timeout makes sure that is invoked after any other event has been triggered.
+    # timeout makes sure that is invoked after any other event has been
+    # triggered.
     # e.g. click events that need to run before the focus or
-    # inputs elements that are in a disabled state but are enabled when those events
-    # are triggered.
+    # inputs elements that are in a disabled state but are enabled when those
+    # events are triggered.
     $timeout ->
       element = document.getElementById(id)
       if element

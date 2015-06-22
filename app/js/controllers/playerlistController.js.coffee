@@ -1,11 +1,12 @@
 'use strict'
-m = angular.module 'playerListController', ['ladderFactories']
+m = angular.module 'playerListController', ['ladderServices']
 
 m.controller 'PlayerListCtrl', [
   '$scope'
   '$http'
   'focus'
-  ($scope, $http, focus) ->
+  'playerService'
+  ($scope, $http, focus, playerService) ->
     angular.extend $scope,
       players : []
       myRank : 0
@@ -16,7 +17,11 @@ m.controller 'PlayerListCtrl', [
           true
         else
           false
-
+      getPlayers : ->
+        playersPromise = playerService.getPlayers()
+        playersPromise.then (playerList) ->
+          $scope.players = playerList
+          console.log(playerList)
 
     $scope.turnon = (id) ->
       console.log 'called turnon'

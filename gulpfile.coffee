@@ -28,6 +28,7 @@ gulp.task 'default', [
 
 gulp.task 'lint', ->
   gulp.src 'app/js/**/*.coffee'
+  .on 'error', gutil.log
   .pipe coffeelint()
   .pipe coffeelint.reporter()
 
@@ -53,10 +54,10 @@ gulp.task 'copy-assets', ->
 gulp.task 'build-js', ['lint'], ->
   gulp.src 'app/js/**/*.coffee'
   .pipe coffee bare: true
+  .on 'error', gutil.log
   .pipe concat 'app.js'
   .pipe gulp.dest 'dist/js'
   .pipe reload({stream: true})
-  .on 'error', gutil.log
 
 gulp.task 'build-jade', ->
   gulp.src 'app/**/*.jade'

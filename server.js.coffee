@@ -1,14 +1,15 @@
-express = require('express')
-bodyParser = require('body-parser')
-config = require('./config')
-passport = require('passport')
-http = require('http')
+express = require 'express'
+bodyParser = require 'body-parser'
+config = require './config'
+passport = require 'passport'
+http = require 'http'
 LocalStrategy = require('passport-local').Strategy
-cookieParser = require('cookie-parser')
-morgan = require('morgan')
-session = require('express-session')
-mongoose = require('mongoose')
+cookieParser = require 'cookie-parser'
+morgan = require 'morgan'
+session = require 'express-session'
+mongoose = require 'mongoose'
 favicon = require 'serve-favicon'
+expect = require('chai').expect
 env = process.env.ENV
 if env
   mongoose.connect process.env.MONGOHQ_URL
