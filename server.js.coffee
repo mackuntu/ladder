@@ -99,10 +99,17 @@ app.put '/player', (req, res) ->
       res.sendStatus 400
     else
       newPlayer = new models.Player(req.body)
+      models.
       models.Player.count {}, (err, count) ->
         newPlayer.rank = count + 1
         newPlayer.save()
         res.sendStatus 200
+
+app.get '/player', (req, res) ->
+  models.Player.find {
+    id: req.body.id
+  }, (err, data) ->
+    console.log data
 
 app.put '/game', (req, res) ->
   console.log req.body
@@ -132,7 +139,7 @@ app.get '/games', (req, res) ->
     , (err, data) ->
       if err?
         console.log('error when trying to get games')
-        res.send JSON.stringify([])
+        res.send JSON.stringify []
       else
         res.send JSON.stringify data
   else

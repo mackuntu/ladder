@@ -31,11 +31,12 @@
                   h2 {{player.rank}}
                 .media-body
                   h3.media-heading
-                    | {{::player.name}}
+                    | {{::player.firstName}} {{::player.lastName}}
                   p weeks at location
                   div(ng-if='canChallenge(player.rank)')
                     button.btn.btn-primary()
                       | Challenge
+          input.btn.btn-success(ng-click="addRandom()", value = "Add Random Player", type='submit')
     .col-md-4
       .widget
         .widget-header

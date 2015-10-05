@@ -8,11 +8,18 @@ m.factory 'playerService', [
     getPlayers : ->
       deferred = $q.defer()
       $http.get '/players'
-      .success (data, status, headers, config) ->
+      .success (data) ->
         deferred.resolve(data)
-      .error (data, status, headers, config) ->
+      .error (data, status) ->
         deferred.reject(status)
       deferred.promise
+    getPlayer : (email) ->
+      deferred = $q.defer()
+      $http.get 'player',
+        email: email
+      .success (data) ->
+        console.log(data)
+
     createPlayer : (newPlayer) ->
       $http.put '/player',
         firstName: newPlayer.firstName
@@ -20,9 +27,9 @@ m.factory 'playerService', [
         alias: newPlayer.alias
         company: newPlayer.company
         group: newPlayer.group
-      .success (data, status, headers, config) ->
-        console.log data
-      .error (data, status, headers, config) ->
+      .success (data) ->
+        @getPlayer(newPlayer.alias)
+      .error (data, status) ->
         console.log 'post to new player returned error'
         console.log status
 ]

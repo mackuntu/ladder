@@ -22,6 +22,7 @@ TournamentSchema = new Schema(
   group: String
   company: String
   maxPlayers: Number
+  numPlayers: Number
 )
 
 module.exports.Tournament = mongoose.model('Tournament', TournamentSchema)

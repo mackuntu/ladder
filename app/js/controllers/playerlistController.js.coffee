@@ -22,6 +22,19 @@ m.controller 'PlayerListCtrl', [
         playersPromise.then (playerList) ->
           $scope.players = playerList
           console.log(playerList)
+      # This is a test method
+      addRandom : ->
+        console.log('called add random')
+        randomPlayer =
+          firstName: "Martin"
+          lastName: Math.random().toString(36).substring(7)
+          alias: Math.random().toString(36).substring(7)
+          company: "Amazon"
+          group: "ihm"
+          suffix: String
+          email: "mackuntu@gmail.com"
+        playerService.createPlayer(randomPlayer)
+        $scope.players.push(randomPlayer)
 
     $scope.turnon = (id) ->
       console.log 'called turnon'
